@@ -56,13 +56,10 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # network
-alias net1='watch --interval=2 "sudo netstat -apn -l -A inet"'
-alias net2='sudo lsof -i'
-alias net3='watch --interval=2 "sudo netstat -tulpan"'
-alias net4='sudo netstat -tulpan'
-alias net5='watch --interval=2 "sudo netstat -utapen"'
-alias net6='watch --interval=2 "sudo netstat -ano -l -A inet"'
-alias ports="netstat -tulanp"
+#  Lists active internet connections (condensed)
+alias net2='watch --interval=2 "sudo netstat -tulpan"'
+#  Lists active internet connections (with user)
+alias net3='watch --interval=2 "sudo netstat -utapen"'
 
 # sec
 alias msfconsole="systemctl start postgresql; msfdb start; msfconsole;"
