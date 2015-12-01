@@ -57,19 +57,11 @@ export LANG=en_US.UTF-8
 
 # network
 alias net1='watch --interval=2 "sudo netstat -apn -l -A inet"'
-alias net2='watch --interval=2 "sudo netstat -anp --inet --inet6"'  
-alias net3='sudo lsof -i'
-alias net4='watch --interval=2 "sudo netstat -p -e --inet --numeric-hosts"'
-alias net5='watch --interval=2 "sudo netstat -tulpan"'
-alias net6='sudo netstat -tulpan'
-alias net7='watch --interval=2 "sudo netstat -utapen"'
-alias net8='watch --interval=2 "sudo netstat -ano -l -A inet"'
-alias netl='sudo nmap -sT -O localhost' # more here http://www.redhat.com/docs/manuals/linux/RHL-9-Manual/security-guide/s1-server-ports.html
-alias ping='ping -c 10'
-alias currports='wine /home/iceni60/Desktop/Desktop_Folder/Network_Tools/currports/cports.exe'
-alias winwhois='wine /home/iceni60/Desktop/Desktop_Folder/Network_Tools/win32whois_0_9_13/win32whois.exe'
-alias xnews='wine /home/iceni60/Desktop/Desktop_Folder/Network_Tools/XNews/XNEWS.EXE'
-alias whois='whois -H'
+alias net2='sudo lsof -i'
+alias net3='watch --interval=2 "sudo netstat -tulpan"'
+alias net4='sudo netstat -tulpan'
+alias net5='watch --interval=2 "sudo netstat -utapen"'
+alias net6='watch --interval=2 "sudo netstat -ano -l -A inet"'
 alias ports="netstat -tulanp"
 
 # sec
@@ -77,12 +69,6 @@ alias msfconsole="systemctl start postgresql; msfdb start; msfconsole;"
 alias nmap="nmap --reason --open"
 alias aircrack-ng="aircrack-ng -z"
 alias airodump-ng="airodump-ng --manufacturer --wps --uptime"
-alias openvas="openvas-stop; openvas-start; sleep 3; xdg-open https://127.0.0.1:9392/ >/dev/null 2>&1"
-alias wwwroot="cd /var/www/"
-alias ftproot="cd /var/ftp/"
-alias tftproot="cd /var/tftp/"
-alias sambaroot="cd /var/samba/"
-alias vmroot="cd /mnt/hgfs/"
 alias edb="cd /usr/share/exploitdb/exploitdb/"
 alias wordlist="cd /usr/share/wordlist/"
 
