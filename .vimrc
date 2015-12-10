@@ -1,4 +1,4 @@
-" Basics 
+" Basics! 
 set nocompatible
 set backspace=indent,eol,start
 set term=screen-256color
