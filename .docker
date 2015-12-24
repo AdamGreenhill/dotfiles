@@ -1,0 +1,4 @@
+# Docker Aliases
+#
+
+alias dockerpurge='sudo docker rm $(docker ps -a -q)'
