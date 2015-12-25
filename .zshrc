@@ -76,7 +76,6 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ff='sudo find / -name $1'
 alias ps='ps auxf'
-alias pg='ps aux | grep'* # requires an argument
 alias tmux='tmux -2'
 alias axel="axel -a"
 
