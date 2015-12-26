@@ -17,6 +17,19 @@ del_stopped(){
 		docker rm $name
 	fi
 }
+
+django_bootstrap(){
+	docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject $1;
+}
+
+django_debug(){
+	docker run -it -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 django bash
+}
+
+django_server(){
+	docker run -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+}
+
 relies_on(){
 	local containers=$@
 
