@@ -130,6 +130,6 @@ alias ff='sudo find / -name $1'
 
 alias ps='ps auxf'
 
-alias pg='ps aux | grep'* # requires an argument
+alias pg='ps aux | grep' # requires an argument
 
 alias tmux='tmux -2'
