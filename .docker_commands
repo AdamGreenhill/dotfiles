@@ -9,6 +9,16 @@ dcleanup(){
 	docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
 	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
+
+drunning(){
+	processes=`ps aux`
+
+	if [[ $processes != *"docker daemon"* ]]
+	then
+		sudo docker daemon &
+	fi
+}
+
 del_stopped(){
 	local name=$1
 	local state=$(docker inspect --format "{{.State.Running}}" $name 2>/dev/null)
@@ -19,14 +29,17 @@ del_stopped(){
 }
 
 django_bootstrap(){
+	drunning
 	docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject $1;
 }
 
 django_debug(){
+	drunning
 	docker run -it -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 django bash
 }
 
 django_server(){
+	drunning
 	docker run -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
 }
 
