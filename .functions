@@ -464,3 +464,12 @@ backup_bashfiles()
 	 tar -czvf $ARCHIVE .bash_profile .bashrc .bash_functions .bash_aliases .bash_prompt
 	 echo "All backed up in $ARCHIVE";
 }
+
+update_dotfiles()
+{
+	mkdir /tmp/dotfiles;
+	cd /tmp/dotfiles;
+	git clone https://github.com/AdamGreenhill/dotfiles
+	cd dotfiles;
+	\cp -rf .* ~
+}
