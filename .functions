@@ -477,6 +477,8 @@ update_dotfiles()
 	git clone https://github.com/AdamGreenhill/dotfiles
 	cd dotfiles;
 	\cp -rf .* ~ 2> /dev/null
+	cd ~
+	rm -rf /tmp/dotfiles
 
 	if [ $BASH_VERSION ]; then
 		`which bash`
