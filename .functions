@@ -467,12 +467,16 @@ backup_bashfiles()
 
 update_dotfiles()
 {
+
+	if [ -d '/tmp/dotfiles' ]; then
+		rm -rf /tmp/dotfiles
+	fi
+
 	mkdir /tmp/dotfiles;
 	cd /tmp/dotfiles;
 	git clone https://github.com/AdamGreenhill/dotfiles
 	cd dotfiles;
 	\cp -rf .* ~ 2> /dev/null
-	rm -rf /tmp/dotfiles
 
 	if [ $BASH_VERSION ]; then
 		`which bash`
