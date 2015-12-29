@@ -6,8 +6,8 @@
 # Helper Functions
 #
 dcleanup(){
-	docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
-	docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
+	sudo docker rm -v $(docker ps --filter status=exited -q 2>/dev/null) 2>/dev/null
+	sudo docker rmi $(docker images --filter dangling=true -q 2>/dev/null) 2>/dev/null
 }
 
 drunning(){
@@ -17,6 +17,13 @@ drunning(){
 	then
 		sudo docker daemon &
 	fi
+}
+
+dbuild(){
+
+	drunning
+	sudo docker build `pwd`
+
 }
 
 del_stopped(){
@@ -30,17 +37,17 @@ del_stopped(){
 
 django_bootstrap(){
 	drunning
-	docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject $1;
+	sudo docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app django django-admin.py startproject $1;
 }
 
 django_debug(){
 	drunning
-	docker run -it -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 django bash
+	sudo docker run -it -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 django bash
 }
 
 django_server(){
 	drunning
-	docker run -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
+	sudo docker run -v "$PWD":/usr/src/app -w /usr/src/app -p 8000:8000 -d django bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
 }
 
 relies_on(){
