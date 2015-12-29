@@ -26,6 +26,20 @@ dbuild(){
 
 }
 
+dsetup_device() {
+	if [ ! -c "$1" ]; then
+		sudo mknod $1 c 81 0
+		sudo chmod 666 $1
+	fi
+}
+
+dsetup_display() {
+
+	DISPLAY=:0.0; export DISPLAY;
+	xhost +localhost;
+
+}
+
 del_stopped(){
 	local name=$1
 	local state=$(docker inspect --format "{{.State.Running}}" $name 2>/dev/null)
