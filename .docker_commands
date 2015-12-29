@@ -163,7 +163,13 @@ chrome(){
 		args="https://check.torproject.org/api/ip ${@:2}"
 	fi
 
+	drunning
 	del_stopped chrome
+	dsetup_display
+	dsetup_device /dev/snd
+	dsetup_device /dev/dri
+	dsetup_device /dev/video0
+	dsetup_device /dev/usb
 
 	# one day remove /etc/hosts bind mount when effing
 	# overlay support inotify, such bullshit
@@ -223,7 +229,13 @@ consul(){
 	browser-exec "http://consul:8500"
 }
 firefox(){
+
+	drunning
 	del_stopped firefox
+
+	dsetup_display
+	dsetup_device /dev/snd
+	dsetup_device /dev/dri
 
 	docker run -d \
 		--memory 2gb \
@@ -257,7 +269,10 @@ gcalcli(){
 		jess/gcalcli "$@"
 }
 gimp(){
+	drunning
 	del_stopped gimp
+
+	dsetup_display
 
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
@@ -334,7 +349,12 @@ kernel_builder(){
 		jess/kernel-builder
 }
 libreoffice(){
+
+	drunning
+
 	del_stopped libreoffice
+
+	dsetup_display
 
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
@@ -551,6 +571,8 @@ privoxy(){
 pulseaudio(){
 	del_stopped pulseaudio
 
+	dsetup_device /dev/snd
+
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		--device /dev/snd \
@@ -669,6 +691,9 @@ skype(){
 	del_stopped skype
 	relies_on pulseaudio
 
+	dsetup_display
+	dsetup_device /dev/video0
+
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -697,6 +722,8 @@ slack(){
 }
 spotify(){
 	del_stopped spotify
+
+	dsetup_display
 
 	docker run -d \
 		-v /etc/localtime:/etc/localtime:ro \
