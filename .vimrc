@@ -33,4 +33,4 @@ set autoindent " use indentation from current line when opening a new line
 
 " Colors
 syntax enable
-colorscheme sourcerer
+colorscheme molokai_dark
