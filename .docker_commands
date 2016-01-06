@@ -554,6 +554,26 @@ pond(){
 		--name pond \
 		jess/pond
 }
+popcorntime() {
+
+	drunning
+
+	dsetup_display
+	dsetup_device /dev/snd
+	dsetup_device /dev/dri
+
+	sudo docker run -it \
+	--net host \
+        --memory 512mb \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e DISPLAY=unix$DISPLAY \
+        --device /dev/snd \
+        --device /dev/dri \
+	jerivas/popcorntime \
+        /opt/popcorntime/Popcorn-Time
+
+        #    -e http_proxy=localhost:3128 \
+}
 privoxy(){
 	del_stopped privoxy
 	relies_on torproxy
