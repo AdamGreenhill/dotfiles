@@ -486,3 +486,10 @@ update_dotfiles()
 		`which zsh`
 	fi
 }
+
+create_venv() {
+
+  sudo pip install virtualenv
+  virtualenv venv
+  source venv/bin/activate
+}
