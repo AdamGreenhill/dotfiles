@@ -113,13 +113,13 @@ nginx_config(){
 #
 # Container Aliases
 #
-apt_file(){
+aptfile_docker(){
 	docker run --rm -it \
 		--name apt-file \
 		jess/apt-file
 }
 alias apt-file="apt_file"
-aws(){
+aws_docker(){
 	docker run -it --rm \
 		-v $HOME/.aws:/root/.aws \
 		--log-driver none \
@@ -128,7 +128,7 @@ aws(){
 }
 
 # AWS DOS
-bees(){
+bees_docker(){
 	docker run -it --rm \
 		-e NOTARY_TOKEN \
 		-v $HOME/.bees:/root/.bees \
@@ -138,21 +138,7 @@ bees(){
 		--name bees \
 		jess/beeswithmachineguns "$@"
 }
-cadvisor(){
-	docker run -d \
-		--restart always \
-		-v /:/rootfs:ro \
-		-v /var/run:/var/run:rw \
-		-v /sys:/sys:ro  \
-		-v /var/lib/docker/:/var/lib/docker:ro \
-		-p 1234:8080 \
-		--name cadvisor \
-		google/cadvisor
-
-	sudo hostess add cadvisor $(docker inspect --format "{{.NetworkSettings.Networks.bridge.IPAddress}}" cadvisor)
-	browser-exec "http://cadvisor:8080"
-}
-chrome(){
+chrome_docker(){
 	# add flags for proxy if passed
 	local proxy=
 	local map=
@@ -200,7 +186,7 @@ chrome(){
 
 }
 # Tool for service discovery and configuration
-consul(){
+consul_docker(){
 	del_stopped consul
 
 	# check if we passed args and if consul is running
@@ -231,7 +217,7 @@ consul(){
 	sudo hostess add consul $(docker inspect --format "{{.NetworkSettings.Networks.bridge.IPAddress}}" consul)
 	browser-exec "http://consul:8500"
 }
-firefox(){
+firefox_docker(){
 
 	drunning
 	del_stopped firefox
@@ -263,7 +249,7 @@ firefox(){
 	exit 0
 }
 # google calendar cli
-gcalcli(){
+gcalcli_docker(){
 	docker run --rm -it \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v $HOME/.gcalcli/home:/home/gcalcli/home \
@@ -273,7 +259,7 @@ gcalcli(){
 		jess/gcalcli "$@"
 }
 # image manipulation tool
-gimp(){
+gimp_docker(){
 	drunning
 	del_stopped gimp
 
@@ -291,59 +277,20 @@ gimp(){
 		jess/gimp
 }
 # hacker typing ++
-hollywood(){
+hollywood_docker(){
 	docker run --rm -it \
 		--name hollywood \
 		jess/hollywood
 }
 
-htop(){
+htop_docker(){
 	docker run --rm -it \
 		--pid host \
 		--name htop \
 		jess/htop
 }
-http(){
-	docker run -t --rm \
-		-v /var/run/docker.sock:/var/run/docker.sock \
-		--net host \
-		--log-driver none \
-		jess/httpie "$@"
-}
-imagemin(){
-	local image=$1
-	local extension="${image##*.}"
-	local filename="${image%.*}"
 
-	docker run --rm -it \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v $HOME/Pictures:/root/Pictures \
-		jess/imagemin sh -c "imagemin /root/Pictures/${image} > /root/Pictures/${filename}_min.${extension}"
-}
-irssi(){
-	del_stopped irssi
-	relies_on notify_osd
-
-	docker run --rm -it \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /etc/machine-id:/etc/machine-id:ro \
-		-v /var/run/dbus:/var/run/dbus \
-		-v /var/run/user/$(id -u):/var/run/user/$(id -u) \
-		-e TERM \
-		-e XAUTHORITY \
-		-e DBUS_SESSION_BUS_ADDRESS \
-		-e HOME \
-		-v /etc/passwd:/etc/passwd:ro \
-		-v /etc/group:/etc/group:ro \
-		-u $(whoami) -w "$HOME" \
-		-v $HOME/.Xauthority:$HOME/.Xauthority \
-		-v $HOME/.irssi:$HOME/.irssi \
-		--read-only \
-		--name irssi \
-		jess/irssi
-}
-
-libreoffice(){
+libreoffice_docker(){
 
 	drunning
 
@@ -361,27 +308,9 @@ libreoffice(){
 		--name libreoffice \
 		jess/libreoffice
 }
-lpass(){
-	docker run --rm -it \
-		-v $HOME/.lpass:/root/.lpass \
-		--name lpass \
-		jess/lpass "$@"
-}
-lynx(){
-	docker run --rm -it \
-		--name lynx \
-		jess/lynx "$@"
-}
-masscan(){
-	docker run -it --rm \
-		--log-driver none \
-		--net host \
-		--cap-add NET_ADMIN \
-		--name masscan \
-		jess/masscan "$@"
-}
+
 # terminal audio player with ncp
-mpd(){
+mpd_docker(){
 	del_stopped mpd
 
 	# adding cap sys_admin so I can use nfs mount
@@ -397,7 +326,7 @@ mpd(){
 		--name mpd \
 		jess/mpd
 }
-mutt(){
+mutt_docker(){
 	# subshell so we dont overwrite variables
 	(
 	local account=$1
@@ -442,20 +371,7 @@ ncmpc(){
 		--name ncmpc \
 		jess/ncmpc "$@"
 }
-# yubikey priv manager
-neoman(){
-	del_stopped neoman
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
-		--device /dev/bus/usb \
-		--device /dev/usb \
-		--name neoman \
-		jess/neoman
-}
-nes(){
+nes_docker(){
 	del_stopped nes
 	local game=$1
 
@@ -467,12 +383,7 @@ nes(){
 		--name nes \
 		jess/nes /games/${game}.rom
 }
-netcat(){
-	docker run --rm -it \
-		--net host \
-		jess/netcat "$@"
-}
-nginx(){
+nginx_docker(){
 	del_stopped nginx
 
 	docker run -d \
@@ -485,12 +396,6 @@ nginx(){
 	# add domain to hosts & open nginx
 	sudo hostess add jess 127.0.0.1
 }
-nmap(){
-	docker run --rm -it \
-		--net host \
-		jess/nmap "$@"
-}
-
 
 notify_osd(){
 	del_stopped notify_osd
@@ -527,20 +432,6 @@ pandoc(){
 		jess/pandoc ${args} ${rfile}
 }
 
-# yubikey manager
-pivman(){
-	del_stopped pivman
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
-		--device /dev/bus/usb \
-		--device /dev/usb \
-		--name pivman \
-		jess/pivman
-}
-
 # practical music search
 pms(){
 	del_stopped pms
@@ -562,7 +453,7 @@ pond(){
 		--name pond \
 		jess/pond
 }
-popcorntime() {
+popcorntime_docker() {
 
 	drunning
 
@@ -599,7 +490,7 @@ pulseaudio(){
 }
 
 # terminal twitter app
-rainbowstream(){
+rainbowstream_docker(){
 	docker run -it --rm \
 		-v /etc/localtime:/etc/localtime:ro \
 		-v $HOME/.rainbow_oauth:/root/.rainbow_oauth \
@@ -608,18 +499,8 @@ rainbowstream(){
 		jess/rainbowstream
 }
 
-# 
-registrator(){
-	del_stopped registrator
-
-	docker run -d --restart always \
-		-v /var/run/docker.sock:/tmp/docker.sock \
-		--net host \
-		--name registrator \
-		gliderlabs/registrator consul:
-}
 # remote desktop tool
-remmina(){
+remmina_docker(){
 	del_stopped remmina
 
 	docker run -d \
@@ -633,64 +514,7 @@ remmina(){
 		jess/remmina
 }
 
-# anonymous instant messenger
-ricochet(){
-	del_stopped ricochet
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
-		-e GDK_SCALE \
-		-e GDK_DPI_SCALE \
-		-e QT_DEVICE_PIXEL_RATIO \
-		--device /dev/dri \
-		--name ricochet \
-		jess/ricochet
-}
-
-# amazon s3 cli tool
-s3cmdocker(){
-	del_stopped s3cmd
-
-	docker run --rm -it \
-		-e AWS_ACCESS_KEY="${DOCKER_AWS_ACCESS_KEY}" \
-		-e AWS_SECRET_KEY="${DOCKER_AWS_ACCESS_SECRET}" \
-		-v $(pwd):/root/s3cmd-workspace \
-		--name s3cmd \
-		jess/s3cmd "$@"
-}
-# linux tool that provides slack integration
-scudcloud(){
-	del_stopped scudcloud
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
-		-v /etc/machine-id:/etc/machine-id:ro \
-		-v /var/run/dbus:/var/run/dbus \
-		-v /var/run/user/$(id -u):/var/run/user/$(id -u) \
-		-e TERM \
-		-e XAUTHORITY \
-		-e DBUS_SESSION_BUS_ADDRESS \
-		-e HOME \
-		-e QT_DEVICE_PIXEL_RATIO \
-		-v /etc/passwd:/etc/passwd:ro \
-		-v /etc/group:/etc/group:ro \
-		-u $(whoami) -w "$HOME" \
-		-v $HOME/.Xauthority:$HOME/.Xauthority \
-		-v /etc/machine-id:/etc/machine-id:ro \
-		-v $HOME/.scudcloud:/home/jessie/.config/scudcloud \
-		--device /dev/snd \
-		--name scudcloud \
-		jess/scudcloud
-
-	# exit current shell
-	exit 0
-}
-
-skype(){
+skype_docker(){
 	del_stopped skype
 	relies_on pulseaudio
 
@@ -725,7 +549,7 @@ slack(){
 
 	exit
 }
-spotify(){
+spotify_docker(){
 	del_stopped spotify
 
 	dsetup_display
@@ -739,15 +563,7 @@ spotify(){
 		--name spotify \
 		jess/spotify
 }
-ssh2john(){
-	local file=$(realpath $1)
-
-	docker run --rm -it \
-		-v ${file}:/root/$(basename ${file}) \
-		--entrypoint ssh2john \
-		jess/john $@
-}
-steam(){
+steam_docker(){
 	del_stopped steam
 	relies_on pulseaudio
 
@@ -765,25 +581,8 @@ steam(){
 		jess/steam
 }
 
-# powerful twitter client for terminal
-t(){
-	docker run -t --rm \
-		-v $HOME/.trc:/root/.trc \
-		--log-driver none \
-		jess/tcli "$@"
-}
-
-# online backup for the truly paranoid
-tarsnap(){
-	docker run --rm -it \
-		-v $HOME/.tarsnaprc:/root/.tarsnaprc \
-		-v $HOME/.tarsnap:/root/.tarsnap \
-		-v $HOME:/root/workdir \
-		jess/tarsnap "$@"
-}
-
 # terminal gameboy emulator
-termboy(){
+termboy_docker(){
 	del_stopped termboy
 	local game=$1
 
@@ -792,7 +591,7 @@ termboy(){
 		--name termboy \
 		jess/nes /games/${game}.rom
 }
-tor(){
+tor_docker(){
 	del_stopped tor
 
 	docker run -d \
@@ -806,7 +605,7 @@ tor(){
 	# validate we are running through tor
 	browser-exec "https://check.torproject.org/"
 }
-torbrowser(){
+torbrowser_docker(){
 	del_stopped torbrowser
 
 	docker run -d \
@@ -822,7 +621,7 @@ torbrowser(){
 	# exit current shell
 	exit 0
 }
-tormessenger(){
+tormessenger_docker(){
 	del_stopped tormessenger
 
 	docker run -d \
@@ -838,7 +637,7 @@ tormessenger(){
 	# exit current shell
 	exit 0
 }
-torproxy(){
+torproxy_docker(){
 	del_stopped torproxy
 
 	docker run -d \
@@ -852,7 +651,7 @@ torproxy(){
 }
 
 # torrent application
-transmission(){
+transmission_docker(){
 	del_stopped transmission
 
 	docker run -d \
@@ -866,7 +665,7 @@ transmission(){
 		jess/transmission
 }
 
-vagrant(){
+vagrant_docker(){
 	del_stopped vagrant
 
 	# modprobe the module
@@ -888,7 +687,7 @@ vagrant(){
 		jess/vagrant
 }
 
-virtualbox(){
+virtualbox_docker(){
 	del_stopped virtualbox
 
 	# modprobe the module
@@ -909,7 +708,7 @@ virtualbox(){
 		--privileged \
 		jess/virtualbox
 }
-visualstudio(){
+visualstudio_docker(){
 	del_stopped visualstudio
 
 	docker run -d \
@@ -919,7 +718,7 @@ visualstudio(){
 		--name visualstudio \
 		jess/visualstudio
 }
-vlc(){
+vlc_docker(){
 	del_stopped vlc
 	relies_on pulseaudio
 
@@ -938,7 +737,7 @@ vlc(){
 		jess/vlc
 }
 # monitors files and performs actions when they change
-watchman(){
+watchman_docker(){
 	del_stopped watchman
 
 	docker run -d \
@@ -947,51 +746,14 @@ watchman(){
 		--name watchman \
 		jess/watchman --foreground
 }
-wireshark(){
-	del_stopped wireshark
-
-	docker run -d \
-		-v /etc/localtime:/etc/localtime:ro \
-		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
-		--net host \
-		--name wireshark \
-		jess/wireshark
-}
 
 # modern http benchmarking
-wrk(){
+wrk_docker(){
 	docker run -it --rm \
 		--log-driver none \
 		--name wrk \
 		jess/wrk "$@"
 }
-
-# yubico personalize
-ykpersonalize(){
-	del_stopped ykpersonalize
-
-	docker run --rm -it \
-		-v /etc/localtime:/etc/localtime:ro \
-		--device /dev/usb \
-		--device /dev/bus/usb \
-		--name ykpersonalize \
-		jess/ykpersonalize bash
-}
-
-# yubico personalize
-yubico_piv_tool(){
-	del_stopped yubico-piv-tool
-
-	docker run --rm -it \
-		-v /etc/localtime:/etc/localtime:ro \
-		--device /dev/usb \
-		--device /dev/bus/usb \
-		--name yubico-piv-tool \
-		jess/yubico-piv-tool bash
-}
-alias yubico-piv-tool="yubico_piv_tool"
-
 
 ###
 ### Awesome sauce by @jpetazzo
