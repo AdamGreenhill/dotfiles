@@ -1,0 +1,19 @@
+[global_config]
+  title_hide_sizetext = True
+  handle_size = -3
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.8
+    background_type = transparent
+    background_image = None
+    show_titlebar = False
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
