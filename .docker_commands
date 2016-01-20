@@ -361,6 +361,13 @@ mutt_docker(){
 		jess/mutt
 	)
 }
+
+mysql_docker() {
+  	drunning
+	sudo docker run -d -p 3306:3306 -e MYSQL_PASS=$1 tutum/mysql
+	echo "Access mysql with: mysql -h 127.0.0.1 -u admin -p <password>"
+}
+
 # terminal audio player w/ mpd
 ncmpc(){
 	del_stopped ncmpc
