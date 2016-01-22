@@ -1,13 +1,20 @@
 [global_config]
   title_hide_sizetext = True
-  handle_size = -3
+  title_transmit_bg_color = "#6f00c8"
+  inactive_color_offset = 0.89
 [keybindings]
 [profiles]
   [[default]]
+    use_theme_colors = False
+    background_color = "#000000"
+    foreground_color = "#ffffff"
+    palette = "#000000:#847a99:#33a2c1:#5ba299:#5b52ea:#8452c1:#337aea:#e4e4e4:#202020:#868cbb:#55a4d3:#6da4bb:#6d73ec:#8673d3:#558cec:#ffffff"
+    background_image = None
     background_darkness = 0.8
     background_type = transparent
-    background_image = None
+    use_system_font = False
     show_titlebar = False
+    font = Hack 10
 [layouts]
   [[default]]
     [[[child1]]]
@@ -17,3 +24,4 @@
       type = Window
       parent = ""
 [plugins]
+
