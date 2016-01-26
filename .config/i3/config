@@ -145,4 +145,8 @@ bar {
     	}
 }
 
+exec terminator
 exec_always feh --bg-scale ~/.img/wp.png
+
+bindsym Print exec gnome-screenshot
+bindsym $mod+Print exec gnome-screenshot -a
