@@ -6,6 +6,16 @@ set $mod Mod4
 font pango:monospace 8
 floating_modifier $mod
 
+# colours
+set $bg-color            #17001d
+set $inactive-bg-color   #17001d
+# White one used for the focused window
+set $text-color          #f3f4f5
+# light blue one used for the unfocused indicators
+set $inactive-text-color #80699f
+# red one used for the "urgent" windows
+set $urgent-bg-color     #FFFFFF
+
 # window configurations
 new_window pixel 4
 new_float pixel 4
@@ -64,7 +74,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Gaps
-set $default_gaps_inner 40
+set $default_gaps_inner 10
 set $default_gaps_outer 0
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
@@ -104,10 +114,9 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
+bar {
 	# Using lemonbar, see lemonbar.sh
-	# tray_output primary
-#}
+	position top	
+}
 
-exec --no-startup-id xsetroot -solid "#333333"
 exec feh --bg-scale ~/.img/wp.png

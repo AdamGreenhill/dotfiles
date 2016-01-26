@@ -493,3 +493,8 @@ create_venv() {
   virtualenv venv
   source venv/bin/activate
 }
+
+setup_wm() {
+  pacman -S ttf-hack
+  
+}
