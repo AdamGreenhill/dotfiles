@@ -14,6 +14,8 @@
     background_type = transparent
     use_system_font = False
     show_titlebar = False
+    scrollback_infinite = True
+    scrollbar_position = hidden
     font = Hack 10
 [layouts]
   [[default]]
