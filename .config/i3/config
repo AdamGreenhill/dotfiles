@@ -61,13 +61,13 @@ bindsym $mod+a focus parent
 set $workspace1 "main"
 set $workspace2 "dev"
 set $workspace3 "web"
-set $workspace4 "4"
-set $workspace5 "5"
-set $workspace6 "6"
-set $workspace7 "7"
-set $workspace8 "8"
-set $workspace9 "9"
-set $workspace10 "10"
+set $workspace4 "media"
+set $workspace5 "five"
+set $workspace6 "six"
+set $workspace7 "seven"
+set $workspace8 "eight"
+set $workspace9 "nine"
+set $workspace10 "ten"
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
