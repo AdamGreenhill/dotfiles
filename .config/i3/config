@@ -90,6 +90,12 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# assigning
+assign     [class="terminator"]        $workspace1
+assign     [class="Atom"]              $workspace2
+assign     [class="Firefox"]           $workspace3
+assign     [class="Spotify"]           $workspace4
+
 # Gaps
 set $default_gaps_inner 10
 set $default_gaps_outer 0
