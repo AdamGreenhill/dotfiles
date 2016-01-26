@@ -58,16 +58,16 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 # switch to workspace
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace1 "main"
+set $workspace2 "dev"
+set $workspace3 "web"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
@@ -145,4 +145,4 @@ bar {
     	}
 }
 
-exec feh --bg-scale ~/.img/wp.png
+exec_always feh --bg-scale ~/.img/wp.png
