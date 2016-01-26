@@ -5,6 +5,7 @@
 - terminal: terminator
 - image browser: feh
 - web browser: firefox
+- font: hack
 
 ## additional requirements
 - scrot
