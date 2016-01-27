@@ -1,13 +1,18 @@
 # dotfiles
 
 ## applications
-- WM: i3 + i3blocks + i3lock
+- vm: i3 + i3blocks + i3lock
 - terminal: terminator
 - image browser: feh
 - web browser: firefox
+- file browser: ranger
 - font: hack, font-awesome
 
 ## additional requirements
+### lock screen
 - scrot
 - imagemagick
-- i3lock-color-git
+
+### i3blocks bar
+- acpi 
+- amixer
