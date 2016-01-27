@@ -140,7 +140,7 @@ bindsym $mod+r mode "resize"
 bar {
 	# Using lemonbar, see lemonbar.sh
 	position top	
-
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
     	colors {
         	background $bg-color
         	separator #80699f
