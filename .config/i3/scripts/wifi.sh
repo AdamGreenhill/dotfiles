@@ -4,4 +4,6 @@
 SSID=$(iwgetid -r)
 
 # print out the results
-echo  $SSID
+if [ "$SSID" ]; then
+	echo  $SSID
+fi

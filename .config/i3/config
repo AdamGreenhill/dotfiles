@@ -158,3 +158,4 @@ exec_always feh --bg-scale ~/.img/wp.png
 bindsym Print exec gnome-screenshot
 bindsym $mod+Print exec gnome-screenshot -a
 bindsym $mod+x exec bash ~/.config/i3/scripts/lock.sh
+bindsym $mod+l exec bash i3lock -u

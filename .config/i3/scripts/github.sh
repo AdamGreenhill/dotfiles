@@ -4,4 +4,6 @@ something=$(curl -s https://api.github.com/notifications\?access_token\={{ YOUR 
     | grep "unread" \
     | wc -l)
 
-echo "" $something
+if [ "1" == "0" ]; then
+	echo "" $something
+fi
