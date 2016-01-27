@@ -152,6 +152,7 @@ bar {
 }
 
 exec terminator
+exec firefox ~/.config/misc/homepage.html
 exec_always feh --bg-scale ~/.img/wp.png
 
 bindsym Print exec gnome-screenshot
