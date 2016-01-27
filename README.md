@@ -3,6 +3,7 @@
 ## applications
 - vm: i3 + i3blocks + i3lock
 - terminal: terminator
+- launcher: romi
 - image browser: feh
 - web browser: firefox
 - file browser: ranger

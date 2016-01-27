@@ -133,7 +133,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+z mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -158,3 +158,4 @@ exec_always feh --bg-scale ~/.img/wp.png
 bindsym Print exec gnome-screenshot
 bindsym $mod+Print exec gnome-screenshot -a
 bindsym $mod+x exec bash ~/.config/i3/scripts/lock.sh
+bindsym $mod+r exec rofi -show run -lines 5 -eh 2 -opacity "50" -bc "$highlight-color" -bg "$bg-color" -fg "$text-color" -hlfg "$highlight-color" -hlbg "$inactive-bg-color" -font "Hack 10" -hide-scrollbar
