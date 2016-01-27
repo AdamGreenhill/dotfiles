@@ -59,8 +59,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 # switch to workspace
 set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
+set $workspace3 "2 "
+set $workspace2 "3 "
 set $workspace4 "4 "
 set $workspace5 "5 "
 set $workspace6 "6 "
@@ -92,8 +92,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # assigning
 assign     [class="terminator"]        $workspace1
-assign     [class="Atom"]              $workspace2
-assign     [class="Firefox"]           $workspace3
+assign     [class="Firefox"]           $workspace2
+assign     [class="Atom"]              $workspace3
 assign     [class="Spotify"]           $workspace4
 
 # Gaps
@@ -158,4 +158,3 @@ exec_always feh --bg-scale ~/.img/wp.png
 bindsym Print exec gnome-screenshot
 bindsym $mod+Print exec gnome-screenshot -a
 bindsym $mod+x exec bash ~/.config/i3/scripts/lock.sh
-bindsym $mod+l exec bash i3lock -u
