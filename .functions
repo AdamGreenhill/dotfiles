@@ -501,6 +501,9 @@ setup_wm() {
 
 show_rupees()
 {
+ # Tips: use a font with an extended character set: DejuVu Sans, DejuVu Sans Mono, Awesome-Font, etc.
+ # e.g printf '\33]50;%s\007' "xft:DejaVu Sans Mono:pixelsize=14"
+	
   esc=""
 
   Bf="${esc}[30m";   rf="${esc}[31m";    gf="${esc}[32m"
