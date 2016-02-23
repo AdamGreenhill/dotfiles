@@ -1,29 +1,23 @@
 [global_config]
-  title_hide_sizetext = True
-  title_transmit_bg_color = "#6f00c8"
-  inactive_color_offset = 0.89
-[keybindings]
+  title_transmit_fg_color = "#ffffff"
+  title_transmit_bg_color = "#333333"
+  title_inactive_fg_color = "#ffffff"
+  title_inactive_bg_color = "#3d3d3d"
+
 [profiles]
   [[default]]
-    use_theme_colors = False
-    background_color = "#000000"
+    palette = "#333333:#8c4665:#287373:#7c7c99:#395573:#5e468c:#31658c:#899ca1:#3d3d3d:#bf4d80:#53a6a6:#9e9ecb:#477ab3:#7e62b3:#6096bf:#c0c0c0"
     foreground_color = "#ffffff"
-    palette = "#000000:#847a99:#33a2c1:#5ba299:#5b52ea:#8452c1:#337aea:#e4e4e4:#202020:#868cbb:#55a4d3:#6da4bb:#6d73ec:#8673d3:#558cec:#ffffff"
-    background_image = None
-    background_darkness = 0.8
-    background_type = transparent
-    use_system_font = False
-    show_titlebar = False
-    scrollback_infinite = True
-    scrollbar_position = hidden
-    font = Hack 10
+    background_color = "#000000"
+    cursor_color = "#ffffff"
+
 [layouts]
   [[default]]
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
     [[[window0]]]
       type = Window
       parent = ""
 [plugins]
-
