@@ -7,8 +7,8 @@ font pango:hack 10
 floating_modifier $mod
 
 # colours
-set $bg-color            #31658C
-set $inactive-bg-color   #31658C
+set $bg-color            #333333
+set $inactive-bg-color   #333333
 # White one used for the focused window
 set $text-color          #f3f4f5
 set $client-unfocused    #929292
@@ -26,8 +26,8 @@ client.focused_inactive #929292  $inactive-bg-color $inactive-text-color #452c54
 client.urgent           $urgent-bg-color    $text-color        $bg-color            #452c54
 
 # window configurations
-new_window pixel 4
-new_float pixel 4
+new_window pixel 2
+new_float pixel 2
 
 # start a terminal
 bindsym $mod+Return exec terminator
