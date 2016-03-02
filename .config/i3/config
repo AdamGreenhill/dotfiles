@@ -35,7 +35,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+bindsym $mod+u focus up
 bindsym $mod+semicolon focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
