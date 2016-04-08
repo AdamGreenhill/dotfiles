@@ -557,3 +557,8 @@ btsync(){
 	--restart on-failure \
   	bittorrent/sync
 }
+
+say() {
+	command -v espeak >/dev/null 2>&1 || {echo "ERROR: espeak is not installed."; exit}
+	espeak -v female3 -g 12
+}
