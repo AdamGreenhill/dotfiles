@@ -559,6 +559,6 @@ btsync(){
 }
 
 say() {
-	command -v espeak >/dev/null 2>&1 || {echo "ERROR: espeak is not installed."; exit}
-	espeak -v female3 -g 12
+	command -v espeak >/dev/null 2>&1 || { echo >&2 "I require espeak but it's not installed.  Aborting."; exit 1; }
+	espeak -v female3 -g 12 "$1"
 }
