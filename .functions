@@ -575,6 +575,6 @@ install_vmwaretools() {
 
 new-alias() {
   local last_command=$(echo `history |tail -n2 |head -n1` | sed 's/[0-9]* //')
-  echo alias $1="'""$last_command""'" >> ~/.functions
-  . ~/.functions
+  echo alias $1="'""$last_command""'" >> ~/.aliases
+  . ~/.aliases
 }
