@@ -25,10 +25,10 @@ set showmatch " show matching brackets
 set listchars=tab:▸\ ,eol:¬ " show "invisible" characters; toggle with ",i"
 set cpoptions+=$ " nice setting for "cw"; see :help cpoptions
 " indentation
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab " tabs are converted to spaces
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set noexpandtab
 set autoindent " use indentation from current line when opening a new line
 
 " Colors
