@@ -33,3 +33,8 @@ export QT_DEVICE_PIXEL_RATIO=2
 # turn on go vendoring experiment
 export GO15VENDOREXPERIMENT=1
 export GOMAXPROCS=1
+
+# Golang
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT="/usr/local/go/"
+export GOPATH=$HOME/go-packages
