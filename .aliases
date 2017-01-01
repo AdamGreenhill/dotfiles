@@ -7,8 +7,8 @@ alias open='browser-exec "$@"'
 alias strings="strings -a"
 
 # List all files colorized in long format
-alias l="ls --color=auto -la | grep "^d" && ls -la | grep -v "^d""
 alias ls="ls --color=auto"
+alias la="ls -la | grep "^d" && ls -la | grep -v "^d""
 
 # Always enable colored `grep` output
 alias grep='grep --color=auto '
@@ -37,9 +37,6 @@ alias c="tr -d '\n' | xclip -selection clipboard"
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
-# Lock the screen (when going AFK)
-alias afk="i3lock -c 000000"
-
 # vhosts
 alias hosts='sudo vim /etc/hosts'
 
@@ -61,7 +58,5 @@ alias snano="sudo nano"
 alias ff='sudo find / -name $1'
 
 alias ps='ps auxf'
-
-alias pg='ps aux | grep' # requires an argument
 
 alias tmux='tmux -2'
