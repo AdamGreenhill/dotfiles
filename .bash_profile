@@ -32,4 +32,4 @@ done
 
 # print a fortune when the terminal opens
 #fortune -a -s | lolcat
-export PS1="\[\033[38;5;6m\]\d\[$(tput sgr0)\]\[\033[38;5;15m\] \T\n\[$(tput sgr0)\]\[\033[38;5;57m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]: [\[$    (tput sgr0)\]\[\033[38;5;57m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]]\n\[$(tput sgr0)\]\[\033[38;5;6m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;6m\]\d\[$(tput sgr0)\]\[\033[38;5;15m\] \T\n\[$(tput sgr0)\]\[\033[38;5;57m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]: [\[$(tput sgr0)\]\[\033[38;5;57m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]]\n\[$(tput sgr0)\]\[\033[38;5;6m\]\\$\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
