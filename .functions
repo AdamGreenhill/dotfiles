@@ -1,5 +1,23 @@
 #!/bin/bash
 
+encrypt_file() {
+	if [$# -ne 2]; then
+		echo "encrypt_file <file> <password>"
+	else
+		pass="$2"
+		echo "$pass" | whirlpooldeep | gpg --symmetric --armor --cipher-algo AES256 --passphrase-fd 0 $1
+	fi
+}
+
+decrypt_file() {
+	if [$# -ne 2]; then
+		echo "decrypt_file <file> <password> <output file>"
+	else
+		pass="$2"
+		echo "$pass" | whirlpooldeep | gpg -d --passphrase-fd 0 $1 > $3
+	fi
+}
+
 # Create a new directory and enter it
 mkd() {
 	mkdir -p "$@" && cd "$@"
