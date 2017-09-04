@@ -3,7 +3,24 @@
 # debian specific aliases
 alias open='browser-exec "$@"'
 
-# HACKING
+# hacks
+## nmap
+alias nmap="nmap --reason"
+## aircrack suite
+alias aircrack-ng="aircrack-ng -z"
+alias airodump-ng="airodump-ng --manufacturer --wps --uptime"
+## metasploit
+alias msfc="systemctl start postgresql; msfdb start; msfconsole"
+alias msfconsole="systemctl start postgresql; msfdb start; msfconsole"
+## Network
+alias ipx="curl -s http://ipinfo.io/ip"
+alias dns1="dig +short @resolver1.opendns.com myip.opendns.com"
+alias dns2="dig +short @208.67.222.222 myip.opendns.com"
+alias dns3="dig +short @208.67.220.220 which.opendns.com txt"
+## mana-toolkit
+alias mana-toolkit-start="a2ensite 000-mana-toolkit;a2dissite 000-default;systemctl apache2 restart"
+alias mana-toolkit-stop="a2dissite 000-mana-toolkit;a2ensite 000-default;systemctl apache2 restart"
+## Misc
 alias strings="strings -a"
 
 # List all files colorized in long format
