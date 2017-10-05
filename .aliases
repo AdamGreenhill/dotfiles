@@ -10,8 +10,8 @@ alias nmap="nmap --reason"
 alias aircrack-ng="aircrack-ng -z"
 alias airodump-ng="airodump-ng --manufacturer --wps --uptime"
 ## metasploit
-alias msfc="sudo systemctl start postgresql; sudo msfdb start; msfconsole"
-alias msfconsole="sudo systemctl start postgresql; sudo msfdb start; msfconsole"
+alias msfc="sudo systemctl start postgresql; sudo msfdb init; sudo msfdb start; msfconsole"
+alias msfconsole="sudo systemctl start postgresql; sudo msfdb init; sudo msfdb start; msfconsole"
 ## Network
 alias ipx="curl -s http://ipinfo.io/ip"
 alias dns1="dig +short @resolver1.opendns.com myip.opendns.com"
