@@ -37,6 +37,27 @@ install_golang() {
 	rm go1.7.3.linux-amd64.tar.gz
 }
 
+update_dotfiles() {
+
+	if [ -d '/tmp/dotfiles' ]; then
+		rm -rf /tmp/dotfiles
+	fi
+
+	mkdir /tmp/dotfiles;
+	cd /tmp/dotfiles;
+	git clone https://github.com/AdamGreenhill/dotfiles
+	cd dotfiles;
+	\cp -rf .* ~ 2> /dev/null
+	cd ~
+	rm -rf /tmp/dotfiles
+
+	if [ $BASH_VERSION ]; then
+		`which bash`
+	elif [ $ZSH_VERSION ]; then
+		`which zsh`
+	fi
+}
+
 mount_shared_folders() {
 	vmware-hgfsclient | while read folder; do
 	  echo "[i] Mounting ${folder}   (/mnt/hgfs/${folder})"
