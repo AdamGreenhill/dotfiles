@@ -22,3 +22,4 @@ alias mana-toolkit-stop="a2dissite 000-mana-toolkit;a2ensite 000-default;systemc
 alias strings="strings -a"
 alias dockerpurge='sudo docker rm $(sudo docker ps -a -q)'
 alias tmux='tmux -2'
+alias fuck='sudo $(history -p \!\!)'
